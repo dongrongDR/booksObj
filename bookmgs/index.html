@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+	<title>图书管理系统</title>
+
+	<!-- Bootstrap -->
+	<link href="bstrap/css/bootstrap.min.css" rel="stylesheet">
+	 <!-- 时间控件datetimepicker 样式 -->
+	<link href="bstrap/css/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<!-- my css -->
+	<link rel="stylesheet" href="mylib/css/indexUp.css">
+
+</head>
+<body>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="jQ/jquery-3.0.0.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- <script src="bstrap/build/build_standalone.less"></script> -->
+
+	<script src="bstrap/js/bootstrap.min.js"></script>
+	
+
+
+	<script src="underS/underscore.js"></script>
+	
+	<script src="mylib/js/libray.js"></script>
+
+	<!-- ************************** 导航 ************************** -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">图书管理系统</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a href="#">
+							Link
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">Link</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Dropdown
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">Action</a>
+							</li>
+							<li>
+								<a href="#">Another action</a>
+							</li>
+							<li>
+								<a href="#">Something else here</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>	
+								<a href="#">Separated link</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>
+								<a href="#">One more separated link</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search"></div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#">Link</a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							Dropdown
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">Action</a>
+							</li>
+							<li>
+								<a href="#">Another action</a>
+							</li>
+							<li>
+								<a href="#">Something else here</a>
+							</li>
+							<li role="separator" class="divider"></li>
+							<li>
+								<a href="#">Separated link</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!-- ******************* 全部图书 (按钮)*********************** -->
+	
+			<div class="row col-lg-12">
+				<div class="col-lg-6">
+					<div class="container">
+						<button id="allBook" type="button"  class="btn btn-info ">增加图书</button>
+						<button id="upDataBook" type="button" class="btn btn-primary" disabled="disabled">修改</button>
+						<button id="deletBook" type="button" class="btn btn-danger" disabled="disabled">删除</button>
+					</div>
+
+				</div>
+				<!-- /.col-lg-6 -->			
+				<div class="col-lg-6">
+					<div class="input-group">
+						<input id="inputmohu" type="text" class="form-control" >
+						<span class="input-group-btn">
+							<button id="mohucha" class="btn btn-default" type="button">Go!</button>
+						</span>
+					</div>
+					<!-- /input-group -->				
+				</div>
+				<!-- /.col-lg-6 -->				
+				<!-- /.col-lg-6 -->			
+			</div>
+			<!-- /.row -->			
+
+
+	
+	<div class="container">
+		<!-- **************** 表格 ******************* -->
+		<table id="tableAll" class="table table-hover col-xs-12">
+			<thead>
+				<tr>
+					<th><input type="checkbox" id="checks"></th>
+					<th>书名</th>
+					<th>作者</th>
+					<th>出版社</th>
+					<th>出版日期</th>
+					<th>价格</th>
+					<th>类别</th>
+					<th>状态</th>
+					<th>借出状态</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+<!-- ************* 分页 ************************* -->
+	<nav class="text-center ">
+		<ul class="pagination bt-10">
+			<li>
+				<a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">1</a>
+			</li>
+			<li>
+				<a href="#">2</a>
+			</li>
+			<li>
+				<a href="#">3</a>
+			</li>
+			<li>
+				<a href="#">4</a>
+			</li>
+			<li>
+				<a href="#">5</a>
+			</li>
+			<li>
+				<a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- ******************* 增加(摸态框) *********************** -->
+
+	<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="allBookmodal">
+
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">添加书籍</h4>
+			</div>
+			<div class="modal-body">
+				<!-- *********************   提示框内容部分 ****************************** -->
+				<form id="updateBook" action="" method="get" method="#" class="form-horizontal">
+					<div id="colorinput" class="form-group   has-feedback">
+					<input type="hidden" id="hidenval">
+						<label for="" class="col-sm-2 control-label">书名:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="bookName" placeholder="请输入书名(必填)">
+							<!-- ******************  显示书名正确与否 ******************** -->
+							<span id="tishi" class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+							 <!-- <span id="inputError2Status">asdadsadsadsa</span> -->
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+
+						<div class="col-sm-4">
+							 <span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+
+					</div>
+					<div class="form-group  has-feedback">
+						<label for="" class="col-sm-2 control-label">作者:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="author" placeholder="请输入作者(必填)">
+							<span id="tishi" class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+						</div>
+						<div class="col-sm-4">
+							 <span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+
+					</div>
+					<div class="form-group has-feedback">		
+						<label for="" class="col-sm-2 control-label">出版社:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="publisher" placeholder="请输入出版社(必填)">
+							<span id="tishi" class="glyphicon  form-control-feedback" aria-hidden="true"></span>
+						</div>
+						<div class="col-sm-4">
+							 <span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+					</div>
+
+					<div class="form-group has-feedback">
+						<label for="" class="col-sm-2 control-label">出版日期:</label>
+						<div class="col-sm-4">
+				
+							<input type="text" class="form-control" id="p_date" placeholder="请输入日期(必填)">
+							<span id="tishi" class="glyphicon  form-control-feedback" aria-hidden="true"></span></div>
+						<div class="col-sm-4">
+							 <span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+					</div>
+					<div class="form-group has-feedback">
+						<label for="" class="col-sm-2 control-label">价格:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="price" placeholder="请输入价格(必填)">
+							<span id="tishi" class="glyphicon  form-control-feedback" aria-hidden="true"></span></div>
+						<div class="col-sm-4">
+							<span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span> -->
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">上架状态:</label>
+						<div id="radio_sta" class="col-sm-4">
+							<label class="radio-inline">
+								<input type="radio" name="status" id="inlineRadio1" value="1" checked>上架</label>
+							<label class="radio-inline">
+								<input type="radio" name="status" id="inlineRadio2" value="0" >未上架</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">借出状态:</label>
+						<div class="col-sm-4">
+							<label class="radio-inline">
+								<input type="radio" name="borrow_status" id="inlineRadio1" value="1"  >未借出</label>
+							<label class="radio-inline">
+								<input type="radio" name="borrow_status" id="inlineRadio2" value="0" checked>已借出</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">类别:</label>
+						<div class="col-sm-6">
+							<select id="classify" class="form-control">
+								<option value="0">请选择</option>
+							</select>
+						</div>
+						<div class="col-sm-4">
+							<span id="inputError2Status" class="inputtextspan"></span>
+							<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span>
+						-->
+					</div>
+
+					<!-- <span id="inputSuccess2Status" class="sr-only">(error)</span>
+					-->
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="dateUpBook" type="button" class="btn btn-primary ">提交</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div id="dsabo">
+	<div class="bacol"></div>
+	<div class="textalert">加载中请稍后...</div>
+</div>
+	<!-- modal 结束 -->
+       <!-- 事件控件datetimepicker  js -->
+	<script src="bstrap/js/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="bstrap/js/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+</body>
+</html>
